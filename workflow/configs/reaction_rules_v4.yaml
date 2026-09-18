@@ -1,0 +1,45 @@
+schema_version: 1
+frozen_before_phase_02: true
+releases:
+  temporal_T0: 126
+  temporal_T1: 140
+  current_atlas: 141
+canonicalization:
+  canonical_identifier: RHEA_ID_MASTER
+  retain_direction_ids: true
+  retain_obsolete_ids: true
+  directionless_cross_release_signature: true
+  never_treat_new_identifier_as_new_chemistry: true
+cross_release_categories:
+  - stable_id_stable_chemistry
+  - stable_id_chemistry_revision
+  - chemistry_equivalent_id_change
+  - merge
+  - split
+  - obsolete_without_exact_replacement
+  - genuinely_novel_chemistry
+  - direction_change
+reaction_representation:
+  raw_rhea_one_hot_allowed: false
+  morgan_radius: 2
+  fingerprint_bits: 2048
+  store_substrate_fingerprint: true
+  store_product_fingerprint: true
+  store_signed_transform_fingerprint: true
+  downweight_currency_metabolites: true
+currency_metabolites:
+  - CHEBI:15377  # water
+  - CHEBI:15378  # proton
+  - CHEBI:15422  # ATP
+  - CHEBI:16761  # ADP
+  - CHEBI:16027  # AMP
+  - CHEBI:18367  # phosphate
+  - CHEBI:33019  # diphosphate
+  - CHEBI:57540  # NAD(+)
+  - CHEBI:57945  # NADH
+  - CHEBI:58349  # NADP(+)
+  - CHEBI:57783  # NADPH
+  - CHEBI:57287  # coenzyme A(4-)
+notes:
+  - Canonicalization is a data operation; Rhea identifiers remain prohibited as shortcut model features.
+  - Cross-release chemistry categories are assigned before temporal performance is examined.

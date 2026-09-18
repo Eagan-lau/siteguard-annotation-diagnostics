@@ -1,0 +1,177 @@
+schema_version: "4.0"
+project_scope: reaction-resolved enzyme catalytic-function annotation transfer
+primary_seed: 20260819
+
+feature_provenance:
+  allowed_model_inputs:
+    QUERY_DERIVED:
+      - amino_acid_sequence
+      - sequence_derived_features
+      - esm2_embedding
+      - predicted_structure
+      - plddt
+      - sequence_derived_domains
+      - sequence_structure_similarity_to_reference
+      - candidate_query_site_mapped_from_reference
+    REFERENCE_DERIVED:
+      - reference_ec_hierarchy
+      - reference_reaction_chemistry
+      - reference_substrate_product_features
+      - reference_cofactor_class
+      - reference_catalytic_sites
+  prohibited_model_inputs:
+    GROUND_TRUTH_ONLY:
+      - query_ec
+      - query_rhea
+      - query_substrates
+      - query_products
+      - query_reaction_fingerprint
+      - query_true_reaction_similarity
+      - query_catalytic_activity
+      - query_act_site
+      - query_experimental_binding_metal_cofactor
+      - query_mcsa_catalytic_residues
+      - temporal_future_function_fields
+
+tables:
+  protein_table:
+    primary_key: protein_id
+    required_fields:
+      - protein_id
+      - uniprot_accession
+      - entry_name
+      - sequence
+      - sequence_version
+      - taxonomy_id
+      - species
+      - lineage
+      - reviewed_status
+      - fragment_status
+      - length
+      - protein_existence
+      - annotation_score
+      - alphafold_availability
+      - alphafold_model_version
+      - pdb_availability
+      - pfam_domains
+      - interpro_domains
+      - cath_assignment
+      - global_structure_quality
+      - source_database_version
+  activity_table:
+    primary_key: activity_id
+    required_fields:
+      - activity_id
+      - protein_id
+      - ec_l1
+      - ec_l2
+      - ec_l3
+      - ec_l4
+      - canonical_rhea
+      - rhea_direction_group
+      - rhea_relationship_status
+      - substrates
+      - products
+      - reaction_smiles
+      - cofactor
+      - evidence_eco
+      - pubmed_ids
+      - evidence_tier
+      - source_release
+      - annotation_version
+      - obsolete_replacement_status
+  catalytic_site_table:
+    primary_key: catalytic_site_id
+    required_fields:
+      - catalytic_site_id
+      - protein_id
+      - activity_id
+      - site_source
+      - mcsa_id
+      - uniprot_feature_type
+      - residue_number
+      - residue_type
+      - catalytic_role
+      - functional_location
+      - metal_cofactor_role
+      - pdb_id
+      - pdb_chain
+      - pdb_residue_number
+      - sifts_uniprot_residue
+      - evidence
+      - site_confidence
+      - source_version
+  reaction_table:
+    primary_key: canonical_rhea
+    required_fields:
+      - canonical_rhea
+      - release
+      - direction_group
+      - ec_links
+      - substrates
+      - products
+      - reaction_smiles
+      - obsolete_status
+      - replacement_ids
+
+observed_annotation_concordance:
+  D_obs_3: shared_exact_canonical_rhea
+  D_obs_2: different_rhea_shared_ec_l4
+  D_obs_1: different_ec_l4_shared_ec_l3
+  D_obs_0: different_ec_l3
+  interpretation: deepest shared documented annotation resolution
+
+split_contract:
+  order:
+    - protein_clustering
+    - train_validation_test_protein_split
+    - within_split_pair_generation
+  main_sequence_identity: 0.30
+  minimum_bidirectional_coverage: 0.70
+  sensitivity_sequence_identity:
+    - 0.40
+    - 0.50
+  required_holdouts:
+    - sequence_cluster
+    - pfam_family
+    - pfam_clan
+    - cath_superfamily
+    - structure_cluster
+    - taxonomy_species
+    - reaction_activity
+    - temporal
+
+pair_sets:
+  population_atlas:
+    balanced: false
+    preserve_sampling_probability: true
+    inverse_probability_weighting: true
+  balanced_training:
+    activity_balanced: true
+    family_balanced: true
+    enrich_difficult_cases: true
+    cap_frequent_activities: true
+
+local_analysis:
+  cohorts:
+    - dual_curated_site
+    - deployment_mimicking_mapped_site
+  default_radius_angstrom: 8
+  sensitivity_radii_angstrom:
+    - 6
+    - 10
+  levels:
+    Local_0: mapped_catalytic_residue_identity
+    Local_1: chemical_role_compatibility
+    Local_2: local_neighborhood_composition
+    Local_3: coarse_3d_microenvironment
+  phase_09_go_no_go_required: true
+
+temporal_contract:
+  T0_uniprot: "2023_01"
+  T0_rhea: "126"
+  T1_uniprot: "2026_01"
+  T1_rhea: "140"
+  current_only_uniprot: "2026_02"
+  current_only_rhea: "141"
+  main_set_requires_sequence_stable: true

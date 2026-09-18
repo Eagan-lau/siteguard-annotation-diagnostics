@@ -1,0 +1,11 @@
+query_id	endpoint	truth_labels
+no_annotation	EC_L4	[]
+no_library	EC_L4	["9.9.9.9"]
+retrieval_loss	EC_L4	["2.2.2.2"]
+retention_loss	EC_L4	["2.2.2.2"]
+score_loss	EC_L4	["2.2.2.2"]
+tie_loss	EC_L4	["2.2.2.2"]
+concordant	EC_L4	["2.2.2.2"]
+no_selection	EC_L4	["2.2.2.2"]
+rejected_match	EC_L4	["2.2.2.2"]
+other_policy	EC_L4	["2.2.2.2"]

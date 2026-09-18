@@ -1,0 +1,71 @@
+schema_version: 1
+frozen_before_phase_04: true
+seed: 20260819
+main_split:
+  column: split
+  identity_threshold: 0.30
+  reference_partition: train
+  query_partitions:
+    - validation
+    - test
+candidate_policy:
+  top_k:
+    - 10
+    - 20
+    - 50
+    - 100
+  raw_search_depth:
+    mmseqs: 1000
+    foldseek: 500
+  deduplicate_by: reference_cluster_id_30
+  exclude_query_self: true
+mmseqs2:
+  version: 18.8cc5c
+  sensitivity: 7.5
+  evalue: 1000.0
+  minimum_coverage: 0.0
+foldseek:
+  version: 10.941cd33
+  sensitivity: 9.5
+  evalue: 1000.0
+  alignment_type: 2
+  sort_by_structure_bits: true
+  source: AlphaFold DB SwissProt v6 frozen tar
+  missing_structure_policy: retain_for_sequence_retrieval_and_mark_foldseek_unavailable
+structure_holdout:
+  cluster_engine: Foldseek
+  tm_score_threshold: 0.50
+  minimum_bidirectional_coverage: 0.50
+  cluster_mode: 0
+  cluster_reassign: false
+  split_namespace: foldseek_structure_cluster
+retrieval_ceiling:
+  annotation_levels:
+    - EC_L3
+    - EC_L4
+    - EXACT_RHEA
+  metrics:
+    - query_any_correct_recall
+    - macro_label_set_recall
+    - query_candidate_coverage
+  union_definition: union_of_top_k_per_modality
+hard_guards:
+  query_ground_truth_in_candidate_tables: false
+  reference_must_be_train: true
+  query_must_be_validation_or_test: true
+  raw_data_read_only: true
+amendment_log:
+  - date: "2026-08-19"
+    phase04_attempt: 1488901
+    change: raw MMseqs search depth 200 to 1000; Foldseek planned depth 500
+    reason: Top-200 yielded a median of 32 candidates and zero queries with 100 candidates after pre-registered reference-cluster deduplication
+    outcome_information_used: candidate row/rank counts only; no EC or Rhea retrieval labels were evaluated
+  - date: "2026-08-20"
+    phase04_attempts:
+      - 1488922
+      - 1489035
+      - 1489107
+      - 1489225
+    change: disable optional Foldseek cluster reassignment and promote the completed standard cluster database
+    reason: cluster reassignment exceeded cumulative 15 hours and the 8-hour batch limit; the standard clustering stage had completed at the frozen TM-score and coverage thresholds
+    outcome_information_used: scheduler state, runtime, memory, and Foldseek workflow logs only; no EC, Rhea, retrieval-ceiling, or test-performance labels were evaluated

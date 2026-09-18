@@ -1,0 +1,129 @@
+{
+  "groups": [
+    {
+      "id": "uniprot_current_complete",
+      "database": "uniprot",
+      "version": "2026_02",
+      "base_url": "https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/",
+      "relative_dir": "uniprot/current_2026_02",
+      "required": true,
+      "files": ["LICENSE", "README", "RELEASE.metalink", "reldate.txt", "uniprot.xsd", "uniprot_sprot.dat.gz", "uniprot_sprot.fasta.gz", "uniprot_sprot.xml.gz", "uniprot_sprot_varsplic.fasta.gz"]
+    },
+    {
+      "id": "uniprot_current_metadata",
+      "database": "uniprot",
+      "version": "2026_02",
+      "base_url": "https://ftp.uniprot.org/pub/databases/uniprot/current_release/",
+      "relative_dir": "uniprot/current_2026_02/release_metadata",
+      "required": true,
+      "files": ["README", "RELEASE.metalink", "changes.html", "relnotes.txt"]
+    },
+    {
+      "id": "uniprot_historical_2023_01",
+      "database": "uniprot",
+      "version": "2023_01",
+      "base_url": "https://ftp.uniprot.org/pub/databases/uniprot/previous_releases/release-2023_01/",
+      "relative_dir": "uniprot/historical_2023_01",
+      "required": true,
+      "files": ["RELEASE.metalink", "changes.html", "news.html", "relnotes.txt", "knowledgebase/RELEASE.metalink", "knowledgebase/UniProtKB_SwissProt-relstat.html", "knowledgebase/uniprot_sprot-only2023_01.tar.gz"]
+    },
+    {
+      "id": "uniprot_historical_2026_01",
+      "database": "uniprot",
+      "version": "2026_01",
+      "base_url": "https://ftp.uniprot.org/pub/databases/uniprot/previous_releases/release-2026_01/",
+      "relative_dir": "uniprot/historical_2026_01",
+      "required": true,
+      "files": ["RELEASE.metalink", "changes.html", "news.html", "relnotes.txt", "knowledgebase/RELEASE.metalink", "knowledgebase/UniProtKB_SwissProt-relstat.html", "knowledgebase/uniprot_sprot-only2026_01.tar.gz"]
+    },
+    {
+      "id": "enzyme",
+      "database": "enzyme",
+      "version": "2026-06-10",
+      "base_url": "https://ftp.expasy.org/databases/enzyme/",
+      "relative_dir": "enzyme/release_2026_06_10",
+      "required": true,
+      "files": ["README", "enzclass.txt", "enzuser.txt", "enzyme.dat", "enzyme.rdf"]
+    },
+    {
+      "id": "mcsa_flat",
+      "database": "mcsa",
+      "version": "snapshot_2026-08-18",
+      "base_url": "https://www.ebi.ac.uk/thornton-srv/m-csa/media/flat_files/",
+      "relative_dir": "mcsa/snapshot_2026-08-18/flat_files",
+      "required": true,
+      "files": ["curated_data.csv", "literature_pdb_residues.csv", "literature_pdb_residues_roles.csv"]
+    },
+    {
+      "id": "alphafold_v6",
+      "database": "alphafold",
+      "version": "v6",
+      "base_url": "https://ftp.ebi.ac.uk/pub/databases/alphafold/",
+      "relative_dir": "alphafold/bulk_swissprot_v6",
+      "required": true,
+      "files": ["README.txt", "CHANGELOG.txt", "download_metadata.json", {"name": "swissprot_cif_v6.tar", "path": "latest/swissprot_cif_v6.tar", "large": true}]
+    },
+    {
+      "id": "sifts_flat",
+      "database": "sifts",
+      "version": "snapshot_2026-08-18",
+      "base_url": "https://ftp.ebi.ac.uk/pub/databases/msd/sifts/flatfiles/tsv/",
+      "relative_dir": "sifts/flatfiles",
+      "required": true,
+      "files": ["pdb_chain_cath_uniprot.tsv.gz", "pdb_chain_enzyme.tsv.gz", "pdb_chain_hmmer.tsv.gz", "pdb_chain_interpro.tsv.gz", "pdb_chain_pfam.tsv.gz", "pdb_chain_taxonomy.tsv.gz", "pdb_chain_uniprot.tsv.gz", "pdb_pfam_mapping.tsv.gz", "pdb_pubmed.tsv.gz", "uniprot_pdb.tsv.gz", "uniprot_segments_observed.tsv.gz", "pdb_chain_scop2_uniprot.tsv.gz", "pdb_chain_scop2b_sf_uniprot.tsv.gz", "pdb_chain_scop_uniprot.tsv.gz"]
+    },
+    {
+      "id": "pdb_chemical_components",
+      "database": "pdb",
+      "version": "snapshot_2026-08-18",
+      "base_url": "https://files.wwpdb.org/pub/pdb/data/monomers/",
+      "relative_dir": "pdb/chemical_components",
+      "required": true,
+      "files": ["components.cif.gz", "aa-variants-v1.cif.gz"]
+    },
+    {
+      "id": "pfam",
+      "database": "pfam",
+      "version": "current_2026-01-22",
+      "base_url": "https://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/",
+      "relative_dir": "pfam/current_release_2026_01_22",
+      "required": true,
+      "files": ["Pfam-A.clans.tsv.gz", "Pfam-A.dead.gz", "Pfam-A.hmm.dat.gz", "Pfam-A.hmm.gz", "Pfam-A.seed.gz", "Pfam-C.gz", "Pfam.version.gz", "active_site.dat.gz", "md5_checksums", "pfamA.txt.gz", "relnotes.txt", "userman.txt", {"name": "trees.tgz", "required": false}]
+    },
+    {
+      "id": "cath_classification",
+      "database": "cath",
+      "version": "4.4.0",
+      "base_url": "https://download.cathdb.info/cath/releases/all-releases/v4_4_0/cath-classification-data/",
+      "relative_dir": "cath/v4_4_0/classification",
+      "required": true,
+      "files": ["README-cath-domain-boundaries-file-format.txt", "README-cath-domain-desc-file-format.txt", "README-cath-list-file-format.txt", "README-cath-names-file-format.txt", "cath-chain-list-v4_4_0.txt", "cath-domain-boundaries-seqreschopping-v4_4_0.txt", "cath-domain-boundaries-v4_4_0.txt", "cath-domain-list-S100-v4_4_0.txt", "cath-domain-list-S35-v4_4_0.txt", "cath-domain-list-S60-v4_4_0.txt", "cath-domain-list-S95-v4_4_0.txt", "cath-domain-list-v4_4_0.txt", "cath-names-v4_4_0.txt", "cath-superfamily-list-v4_4_0.txt", "cath-unclassified-list-v4_4_0.txt"]
+    },
+    {
+      "id": "cath_sequences",
+      "database": "cath",
+      "version": "4.4.0",
+      "base_url": "https://download.cathdb.info/cath/releases/all-releases/v4_4_0/sequence-data/",
+      "relative_dir": "cath/v4_4_0/sequences",
+      "required": true,
+      "files": ["cath-domain-seqs-S100-v4_4_0.fa", "cath-domain-seqs-S35-v4_4_0.fa", "cath-domain-seqs-S60-v4_4_0.fa", "cath-domain-seqs-S95-v4_4_0.fa", "cath-domain-seqs-v4_4_0.fa"]
+    },
+    {
+      "id": "cath_s40",
+      "database": "cath",
+      "version": "4.4.0",
+      "base_url": "https://download.cathdb.info/cath/releases/all-releases/v4_4_0/non-redundant-data-sets/",
+      "relative_dir": "cath/v4_4_0/s40",
+      "required": true,
+      "files": ["cath-dataset-nonredundant-S40-v4_4_0.list", "cath-dataset-nonredundant-S40-v4_4_0.fa", {"name": "cath-dataset-nonredundant-S40-v4_4_0.pdb.tgz", "large": true}]
+    }
+  ],
+  "singletons": [
+    {"id": "rhea_126", "database": "rhea", "version": "126", "url": "https://ftp.expasy.org/databases/rhea/old_releases/126.tar.bz2", "relative_path": "rhea/release_126/126.tar.bz2", "required": true, "large": true},
+    {"id": "rhea_140", "database": "rhea", "version": "140", "url": "https://ftp.expasy.org/databases/rhea/old_releases/140.tar.bz2", "relative_path": "rhea/release_140/140.tar.bz2", "required": true, "large": true},
+    {"id": "rhea_141", "database": "rhea", "version": "141", "url": "https://ftp.expasy.org/databases/rhea/old_releases/141.tar.bz2", "relative_path": "rhea/release_141/141.tar.bz2", "required": true, "large": true},
+    {"id": "sifts_modified_entries", "database": "sifts", "version": "snapshot_2026-08-18", "url": "https://ftp.ebi.ac.uk/pub/databases/msd/sifts/sifts_modified_entries.txt", "relative_path": "sifts/sifts_modified_entries.txt", "required": true},
+    {"id": "mcsa_download_page", "database": "mcsa", "version": "snapshot_2026-08-18", "url": "https://www.ebi.ac.uk/thornton-srv/m-csa/download/", "relative_path": "mcsa/snapshot_2026-08-18/download.html", "required": true}
+  ]
+}
+

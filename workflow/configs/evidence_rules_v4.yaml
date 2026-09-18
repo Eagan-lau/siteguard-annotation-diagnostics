@@ -1,0 +1,31 @@
+schema_version: 1
+frozen_before_phase_01: true
+gold_activity_evidence:
+  - ECO:0000269  # experimental evidence used in manual assertion
+  - ECO:0000303  # traceable author statement used in manual assertion
+silver_activity_evidence:
+  - ECO:0000305  # curator inference used in manual assertion
+  - ECO:0007744  # combinatorial evidence used in manual assertion
+  - ECO:0000312  # imported information used in manual assertion
+  - ECO:0000250  # sequence similarity evidence used in manual assertion
+  - ECO:0000255  # sequence model evidence used in manual assertion
+  - ECO:0000256  # match to sequence model evidence used in manual assertion
+gold_site_sources:
+  tier_1:
+    - M-CSA manually curated reference residue
+  tier_2:
+    - UniProt active site with ECO:0000269 or ECO:0000303
+  tier_3:
+    - UniProt binding site with mechanistic ligand and ECO:0000269 or ECO:0000303
+cohort_rules:
+  reviewed_only: true
+  exclude_fragments: true
+  require_valid_sequence: true
+  require_complete_ec_for_ec_gold: true
+  require_raw_rhea_for_precanonical_rhea_gold: true
+  single_documented_activity_requires_exactly_one_activity_row: true
+  multifunctional_requires_distinct_documented_activities: 2
+notes:
+  - These rules were frozen before inspecting V4 Phase 1 results.
+  - Gold means evidence-qualified documented annotation, not complete biochemical activity spectrum.
+  - Canonical Rhea resolution is deferred to Phase 2.

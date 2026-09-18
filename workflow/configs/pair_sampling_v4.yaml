@@ -1,0 +1,53 @@
+schema_version: 1
+phase: 5
+seed: 20260819
+
+# Pair construction is performed only after CHECKPOINT_04_PASS.  Query labels are
+# used to define supervised outcomes and sampling strata, never as model inputs.
+candidate_union:
+  mmseqs_top_k: 50
+  foldseek_top_k: 50
+  exclude_self_pairs: true
+  reference_partition: train
+
+augmentation_per_query:
+  same_exact_rhea_per_label: 2
+  same_ec_l4_per_label: 1
+  same_ec_l3_per_label: 1
+  same_family_divergent: 2
+  matched_controls: 2
+  stratified_random_controls: 2
+
+population_atlas:
+  target_pairs: 1500000
+  balanced: false
+  preserve_sampling_probability: true
+  inverse_probability_weighting: true
+  sampling_strata:
+    - query_partition
+    - candidate_source_class
+    - retrieval_rank_bin
+
+balanced_training:
+  target_pairs: 1500000
+  activity_balanced: true
+  family_balanced: true
+  difficult_cases_enriched: true
+  cap_frequent_activities: true
+  max_pairs_per_exact_rhea: 5000
+  max_pairs_per_ec_l4: 10000
+
+difficult_cases:
+  high_sequence_identity: 0.40
+  adequate_bidirectional_coverage: 0.70
+  low_sequence_identity: 0.30
+  foldseek_top_rank_proxy: 10
+
+size_guard:
+  minimum_pairs_each: 500000
+  maximum_pairs_combined: 5000000
+
+provenance:
+  query_labels: GROUND_TRUTH_ONLY_OUTCOME_AND_SAMPLING
+  reference_labels: REFERENCE_DERIVED
+  retrieval_features: QUERY_REFERENCE_DERIVED

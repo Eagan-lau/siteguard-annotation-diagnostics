@@ -1,0 +1,56 @@
+{
+  "architecture": {
+    "dropout": 0.15,
+    "neck": 128,
+    "outputs": [
+      "EC_L3",
+      "EC_L4",
+      "EXACT_RHEA"
+    ],
+    "residual_blocks": 3,
+    "type": "residual_MLP",
+    "width": 256
+  },
+  "candidate_budgets": [
+    10,
+    25,
+    50,
+    "ALL"
+  ],
+  "cluster_robustness": {
+    "replicates": 2000,
+    "seed": 20260819,
+    "unit": "30_percent_sequence_connected_component"
+  },
+  "hierarchy": "same-candidate EC_L3 gate for EC_L4 and exact Rhea",
+  "primary_rule": {
+    "candidate_pool": "RRF_TOP_50",
+    "minimum_accepted": 100,
+    "objective": "maximum useful correct coverage",
+    "precision_wilson_lower_bound": 0.8
+  },
+  "python_cpu": [
+    3,
+    11,
+    15
+  ],
+  "python_gpu_module": "PyTorch/2.1.2-foss-2023a-CUDA-12.1.1",
+  "retest_denominator": "all RETEST proteins including queries without candidates",
+  "retest_truth_before_rule_freeze": false,
+  "secondary_precision_targets": [
+    0.9,
+    0.95
+  ],
+  "seeds": [
+    20260819,
+    20260820,
+    20260821
+  ],
+  "split_roles": [
+    "TRAIN",
+    "DEV",
+    "CAL_FIT",
+    "CAL_RULE",
+    "RETEST"
+  ]
+}

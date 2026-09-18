@@ -1,0 +1,11 @@
+query_id	state
+no_annotation	NO_RECORDED_ACTIVITY
+no_library	NO_LIBRARY_SUPPORT
+retrieval_loss	ABSENT_FROM_SAVED_UNION
+retention_loss	RETENTION_LOSS
+score_loss	STRICT_SCORE_LOSS
+tie_loss	TOP_SCORE_TIE_LOSS
+concordant	CONCORDANT_TOP1
+no_selection	SCORED_NO_SELECTION
+rejected_match	CONCORDANT_TOP1
+other_policy	OTHER_SELECTION_LOSS

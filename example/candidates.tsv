@@ -1,0 +1,15 @@
+query_id	endpoint	candidate_id	label	retained	score
+no_annotation	EC_L4	a	1.1.1.1	1	0.8
+no_library	EC_L4	a	1.1.1.1	1	0.8
+retrieval_loss	EC_L4	a	1.1.1.1	1	0.8
+retention_loss	EC_L4	a	1.1.1.1	1	0.8
+retention_loss	EC_L4	b	2.2.2.2	0	0.9
+score_loss	EC_L4	a	1.1.1.1	1	0.8
+score_loss	EC_L4	b	2.2.2.2	1	0.4
+tie_loss	EC_L4	a	1.1.1.1	1	0.8
+tie_loss	EC_L4	b	2.2.2.2	1	0.8
+concordant	EC_L4	a	2.2.2.2	1	0.9
+no_selection	EC_L4	a	2.2.2.2	1	0.5
+rejected_match	EC_L4	a	2.2.2.2	1	0.3
+other_policy	EC_L4	a	1.1.1.1	1	0.2
+other_policy	EC_L4	b	2.2.2.2	1	0.9

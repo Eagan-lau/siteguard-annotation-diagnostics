@@ -1,0 +1,20 @@
+{
+  "snapshot_date": "2026-08-18",
+  "static_workers": 16,
+  "large_file_workers": 2,
+  "api_requests_per_second": 3,
+  "web_requests_per_second": 1,
+  "connect_timeout_seconds": 30,
+  "transfer_timeout_seconds": 120,
+  "max_retries": 20,
+  "retry_wait_seconds": 15,
+  "minimum_free_bytes": 751619276800,
+  "minimum_free_inodes": 2000000,
+  "ceci_inode_exception": {
+    "enabled": true,
+    "known_file_limit": 300000,
+    "minimum_remaining_user_files": 200000,
+    "strategy": "Keep AlphaFold v6 as an immutable uncompressed tar, build a member-offset index, and stage only phase-selected members into job-local scratch."
+  },
+  "user_agent": "SiteGuard/3.0 scientific-data-freeze (CÉCI; contact via project owner)"
+}

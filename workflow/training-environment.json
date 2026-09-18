@@ -1,0 +1,16 @@
+{
+  "module": "PyTorch/2.1.2-foss-2023a-CUDA-12.1.1",
+  "python": "3.11.3 (main, Sep  4 2025, 13:43:11) [GCC 12.3.0]",
+  "packages": {
+    "torch": "2.1.2",
+    "numpy": "1.25.1",
+    "scipy": "1.11.1",
+    "pandas": "2.0.3",
+    "scikit-learn": null,
+    "pyarrow": null,
+    "transformers": null,
+    "biopython": null,
+    "lightgbm": null
+  },
+  "scope": "registered neural training/inference environment; not a CPU evaluation environment"
+}

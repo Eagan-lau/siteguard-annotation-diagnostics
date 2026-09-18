@@ -1,0 +1,17 @@
+{
+  "models": [
+    {
+      "name": "esm2_t33_650M_UR50D",
+      "repository": "facebook/esm2_t33_650M_UR50D",
+      "revision": "08e4846e537177426273712802403f7ba8261b6c",
+      "relative_dir": "models/esm2_t33_650M_UR50D"
+    },
+    {
+      "name": "esm2_t12_35M_UR50D",
+      "repository": "facebook/esm2_t12_35M_UR50D",
+      "revision": "6fbf070e65b0b7291e7bbcd451118c216cff79d8",
+      "relative_dir": "models/esm2_t12_35M_UR50D"
+    }
+  ]
+}
+

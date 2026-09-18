@@ -1,0 +1,11 @@
+query_id	endpoint	selected_candidate_id	accepted
+no_annotation	EC_L4	a	1
+no_library	EC_L4	a	1
+retrieval_loss	EC_L4	a	0
+retention_loss	EC_L4	a	0
+score_loss	EC_L4	a	1
+tie_loss	EC_L4	a	1
+concordant	EC_L4	a	1
+no_selection	EC_L4		0
+rejected_match	EC_L4	a	0
+other_policy	EC_L4	a	0

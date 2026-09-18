@@ -1,0 +1,45 @@
+schema_version: 1
+frozen_before_phase_03: true
+seed: 20260819
+benchmark_proteins:
+  activity_evidence:
+    - GOLD
+    - SILVER
+  require_valid_sequence: true
+  exclude_fragments: true
+  require_canonical_ec: true
+sequence_clustering:
+  engine: MMseqs2 easy-cluster
+  main_identity: 0.30
+  sensitivity_identities:
+    - 0.40
+    - 0.50
+  minimum_bidirectional_coverage: 0.70
+  cov_mode: 0
+  cluster_mode: 0
+  sensitivity: 7.5
+split_ratios:
+  train: 0.70
+  validation: 0.15
+  test: 0.15
+independent_holdouts:
+  sequence_cluster: true
+  pfam_family: true
+  pfam_clan: true
+  cath_superfamily: true
+  taxonomy_species: true
+  reaction_activity: true
+  temporal_membership: true
+structure_note: CATH superfamily is the Phase 3 structure grouping; Foldseek structure clusters are appended during Phase 4 retrieval database construction.
+reaction_holdout:
+  group: canonical_rhea
+  multifunctional_cross_split_policy: EXCLUDE_FROM_STRICT_REACTION_HOLDOUT_AND_RETAIN_FOR_CHALLENGE
+temporal:
+  T0_uniprot: "2023_01"
+  T1_uniprot: "2026_01"
+  current_uniprot: "2026_02"
+  main_temporal_requires_T0_T1_sequence_stable: true
+hard_guards:
+  generate_pairs_in_phase_03: false
+  maximum_allowed_protein_overlap: 0
+  maximum_allowed_sequence_cluster_overlap: 0
