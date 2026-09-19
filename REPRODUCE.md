@@ -1,31 +1,24 @@
 # Reproduce the article results
 
-Extract the companion data ZIP in this repository so its top-level directory
-is `data/`. Each command writes to a new output directory.
-Use Python 3.12 in a virtual environment for the pinned analysis dependencies.
-The standalone diagnostic itself supports Python 3.9 or later without packages.
+Extract the companion data ZIP here to obtain `data/`. Use new output directories. The Python-standard-library core diagnostic works with Python 3.9 or later. Use Python 3.12 and the pinned requirements for the full analysis and plotting environment.
 
 ```bash
 python -m pip install -r requirements.txt
+python diagnose.py --example --output outputs/synthetic
 python adapt_s18.py data/diagnosis/source outputs/diagnostic_input
 python diagnose.py --input outputs/diagnostic_input --output outputs/diagnosis
 python analysis/diagnosis/recompute_diagnostic.py data/diagnosis/source outputs/component_diagnosis
 python score_diagnostic.py data/diagnosis/source outputs/score_diagnostics
 python analysis/clean_comparison/recompute_statistics.py --input-dir data/paired_clean --output-dir outputs/clean_comparison
-python figures/render_article_figures.py --output-dir outputs/figures
+python analysis/native_workflows/test_diagnostic_core.py
+python analysis/native_workflows/replay_native_diagnostics.py --input data/native_workflows/source --output outputs/native_workflows
+python analysis/native_workflows/summarize_native.py --results data/native_workflows/results --output outputs/native_metrics.tsv
+python analysis/temporal_pilot/replay.py --data data/temporal_pilot --output outputs/temporal_pilot
+python render_current_figures.py --output outputs/current_figures
 ```
 
-The real-data adapter retains 2,232 query–endpoint records. The CLEAN comparison
-uses 1,116 protein records and 43 sequence components. Its statistical entry
-recalculates 2,000 paired component-bootstrap draws (seed 20260819).
-The score analysis reports both EC endpoints at budgets 10, 25, 50 and all.
+The SiteGuard adapter reconstructs 2,232 query-endpoint states. The native CLEAN/DIAMOND adapter reconstructs 6,696 query-endpoint-output-mode states. The temporal replay reconstructs twenty paired predictions, trained feature order, frozen calibration and all 2,000 component draws from saved per-seed outputs. It does not rerun neural inference or resource acquisition.
 
-Figure rendering requires Arial for the original layout. Source-bundle names
-are mapped by the renderer to the current six main figures and S12–S13.
-The companion archive also supplies final S1–S11 vector figures and their
-scientific source tables. Re-rendering a supplied figure and rerunning its
-upstream model are separate operations.
+Figure rendering uses Arial to preserve layout. `article_figures/` retains the original renderer labels; the top-level entry maps these to current Figures 1–6 and Figure S14, and renders the native Figure 2 plus the graphical abstract. Other supplemental figures and their underlying tables are supplied in `data/article_figures/` and the numerical data directories.
 
-The full upstream workflow uses distinct CPU-analysis and GPU-training
-environments, documented under `workflow/`. These result-reproduction commands
-require neither a GPU nor the third-party pretrained predictors.
+The complete scientific upstream source and CPU/GPU environment definitions are under `workflow/`. These result replays require no GPU, fitting or external pretrained predictor. Third-party resources are downloaded separately from the releases in DATA_SOURCES.md.

@@ -26,3 +26,7 @@ Provider releases used in the study. Third-party terms apply to the source recor
 
 
 CLEAN code and model resources: https://github.com/tttianhao/CLEAN. The paired comparison uses the saved outputs provided in the accompanying data archive.
+
+## Native and temporal extensions
+
+Native CLEAN/DIAMOND inputs and provenance are in `data/native_workflows/`. The unchanged-sequence temporal comparison uses official Swiss-Prot 2026_02 and 2026_03 XML releases from https://ftp.uniprot.org/pub/databases/uniprot/previous_releases/. Source checksums, accession-level evidence and screening counts are in `data/temporal_pilot/`. Original provider licenses remain applicable.
