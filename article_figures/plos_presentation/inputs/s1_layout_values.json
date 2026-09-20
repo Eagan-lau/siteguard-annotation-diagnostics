@@ -1,0 +1,16 @@
+{
+  "historical_split": {
+    "total_protein_records": 210788,
+    "training": 149009,
+    "validation": 34108,
+    "test": 27671
+  },
+  "pair_populations": {
+    "descriptive": 1498893,
+    "optimization": 1500008,
+    "difficult_case": 1324218,
+    "matched_per_arm": 46999
+  },
+  "scope": "Historical benchmark before the later sequence-isolated reconstruction",
+  "original_source": "Historical benchmark source tables supplied with the article and scientific archive"
+}

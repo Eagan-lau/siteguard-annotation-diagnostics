@@ -1,12 +1,12 @@
 cff-version: 1.2.0
-message: "Please cite this software and its accompanying article."
-title: "SiteGuard: Diagnosing reference support and selection failures in enzyme annotation"
-version: "2.6.0"
-date-released: "2026-09-19"
+message: "Please cite this software and the companion dataset when using the article materials."
 type: software
+title: "SiteGuard: software for diagnosing reference support and selection failures in enzyme annotation"
 authors:
   - family-names: Liu
     given-names: Yugeng
+version: 2.7.0
+date-released: 2026-09-20
+doi: 10.5281/zenodo.22859697
+repository-code: "https://github.com/Eagan-lau/siteguard-annotation-diagnostics"
 license: MIT
-doi: 10.5281/zenodo.22845664
-repository-code: https://github.com/Eagan-lau/siteguard-annotation-diagnostics

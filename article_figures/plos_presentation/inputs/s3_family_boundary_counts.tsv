@@ -1,0 +1,13 @@
+resolution	evidence	target_precision	validation_supported	held_out_confirmed
+EC-L3	Sequence identity	0.90	1	0
+EC-L3	Sequence identity	0.95	1	0
+EC-L3	Foldseek identity	0.90	2	1
+EC-L3	Foldseek identity	0.95	1	0
+EC-L4	Sequence identity	0.90	1	0
+EC-L4	Sequence identity	0.95	0	0
+EC-L4	Foldseek identity	0.90	1	0
+EC-L4	Foldseek identity	0.95	0	0
+Exact Rhea	Sequence identity	0.90	1	0
+Exact Rhea	Sequence identity	0.95	0	0
+Exact Rhea	Foldseek identity	0.90	1	0
+Exact Rhea	Foldseek identity	0.95	0	0

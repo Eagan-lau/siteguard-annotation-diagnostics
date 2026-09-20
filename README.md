@@ -1,39 +1,39 @@
-# SiteGuard
+# SiteGuard annotation diagnostics
 
-Query-level diagnosis for **Diagnosing reference support and selection failures in enzyme annotation**. Version 2.6.0.
+Software for **Diagnosing reference support and selection failures in enzyme annotation**.
 
-The diagnostic follows recorded activities through reference support, available candidates and selected outputs. It separates reference gaps, candidate losses and selection failures, then evaluates the gains and costs of a specific change. Native adapters demonstrate the diagnostic on CLEAN EC centres and DIAMOND protein references. SiteGuard is the evaluated candidate-scoring workflow; EvidenceJudge is a downstream selection control.
+The diagnostic traces a query's documented activities through a reference library, candidate set and selected outputs. It identifies missing reference support, candidate loss and selection disagreement. Adapters cover SiteGuard candidate scores, CLEAN EC-centre distances and DIAMOND protein hits.
 
-## Quick start
+## Try the diagnostic
 
-The core diagnostic and synthetic example require only Python 3.9 or later.
+Python 3.9 or later is sufficient for the core and synthetic example.
 
 ```bash
 python diagnose.py --example --output demo_output
 python -m unittest -v test_diagnose.py
 ```
 
-For your own workflow, supply the four tables in [INPUT_FORMAT.md](INPUT_FORMAT.md). Native set-valued adapters and the temporal paired replay use NumPy. [REPRODUCE.md](REPRODUCE.md) gives exact commands.
+To analyze another workflow, supply the four tables described in [INPUT_FORMAT.md](INPUT_FORMAT.md). [REPRODUCE.md](REPRODUCE.md) gives commands for the article's datasets and figures.
 
-## Article materials
+## Files
 
-| Directory | Contents |
+| Location | Contents |
 | --- | --- |
-| `example/` | Ten synthetic queries and expected states |
-| `analysis/` | Paired CLEAN statistics, component diagnosis, native CLEAN/DIAMOND adapters and temporal replay |
-| `article_figures/` | Current source-data renderers and graphical-abstract renderer |
-| `workflow/` | Evaluated acquisition, feature, model and evaluation implementations |
+| `example/` | Ten synthetic queries and expected diagnostic states |
+| `analysis/` | Native workflow adapters, paired comparisons, component diagnosis and temporal replay |
+| `article_figures/` | Numerical figure inputs and plotting programs |
+| `workflow/` | Resource acquisition, features, training and evaluation source |
 
-Download the [data and final models](https://doi.org/10.5281/zenodo.22845711) and extract the ZIP beside this README to obtain `data/`. It includes final predictions, candidate records, component draws, selected fitted models, current figures and the two standalone extension packages. Provider resources are identified in [DATA_SOURCES.md](DATA_SOURCES.md).
+Extract the [data archive](https://doi.org/10.5281/zenodo.22859607) here to obtain `data/`. It contains query-level predictions, candidate records, resampling draws, fitted models and the article figures. Third-party database releases and pretrained models are listed in [DATA_SOURCES.md](DATA_SOURCES.md).
 
-Permanent software archive: https://doi.org/10.5281/zenodo.22845664. Data archive: https://doi.org/10.5281/zenodo.22845711. GitHub release: https://github.com/Eagan-lau/siteguard-annotation-diagnostics/releases/tag/v2.6.0.
+Concordance means agreement with documented activities. Missing annotation and unknown acceptance decisions retain separate states. The temporal dataset contains 10 records in nine sequence components and supports a descriptive paired comparison.
 
-Runnable result replays use saved observations and scores. Upstream model fitting also requires provider resources and feature matrices, mapped in [workflow/README.md](workflow/README.md).
+## Citation and license
 
-## Interpretation
+Release: **2.7.0**. Code author: **Yugeng Liu**.
 
-Concordance is agreement with documented activities. Missing documentation is distinct from an observed disagreement. Native adapters use set-valued endpoints. Unavailable acceptance decisions remain unknown. The temporal intervention is a descriptive ten-record, nine-component comparison; it is not a claim of improved generalization.
+- [Software DOI](https://doi.org/10.5281/zenodo.22859697)
+- [Data DOI](https://doi.org/10.5281/zenodo.22859607)
+- [GitHub release](https://github.com/Eagan-lau/siteguard-annotation-diagnostics/releases/tag/v2.7.0)
 
-## License and citation
-
-Original code: [MIT](LICENSE). Original derived data and figures: [CC BY 4.0](LICENSE-DATA.md). Reused resources retain their provider terms. Citation metadata are in `CITATION.cff`.
+Original code uses [MIT](LICENSE). Original derived data and artwork use [CC BY 4.0](LICENSE-DATA.md). Third-party resources retain their provider terms. Machine-readable software citation: `CITATION.cff`.

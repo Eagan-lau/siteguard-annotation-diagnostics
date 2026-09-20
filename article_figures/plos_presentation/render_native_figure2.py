@@ -7,7 +7,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 
-ROOT=Path(__file__).resolve().parents[2]/'data/native_workflows'
+ROOT=Path(__file__).resolve().parent/'inputs/native_workflows'
 OUT=Path('figure_output')
 COL={'NO_LIBRARY_SUPPORT':'#A6AFB6','ABSENT_FROM_RETURNED_CANDIDATES':'#D5A347','RETENTION_LOSS':'#688FAB','SELECTION_LOSS':'#80659F'}
 def main():
@@ -42,19 +42,28 @@ def main():
     labels=['No library label','No returned match','Outside calling input','Selection loss']
     handles=[Rectangle((0,0),1,1,facecolor=COL[k]) for k in COL]
     fig.legend(handles,labels,loc='center left',bbox_to_anchor=(.075,.38),ncol=4,frameon=False,fontsize=7.1,handlelength=1.1,columnspacing=1.3)
-    fig.text(.035,.337,'C',fontsize=12,weight='bold');fig.text(.083,.337,'Ranks of available matches in discordant outputs',fontsize=10,weight='bold')
+    fig.text(.035,.357,'C',fontsize=12,weight='bold');fig.text(.083,.357,'Ranks of available matches in discordant outputs',fontsize=10,weight='bold')
     for j,m in enumerate(['CLEAN_MAXSEP','DIAMOND_TOP_HIT_SET']):
         ax=fig.add_axes([.12 if j==0 else .63,.085,.34,.20]);sub=[r for r in rows if r['method']==m and r['state']!='CONCORDANT_OUTPUT' and r['returned_match']=='1']
         ranks=np.sort([int(float(r['first_matching_rank'])) for r in sub]);assert len(ranks)==[50,88][j]
         ax.step(np.r_[1,ranks,max(ranks)*1.1],np.r_[0,np.arange(1,len(ranks)+1)/len(ranks)*100,100],where='post',lw=1.6,color=['#267A91','#A56D39'][j])
         ax.set_xscale('log');ax.set_ylim(0,105);ax.set_yticks([0,50,100]);ax.set_xlim(1,max(ranks)*1.15)
-        ax.set_xlabel(['First matching EC-centre rank','First matching protein-hit rank'][j]);ax.set_title(['CLEAN: 50 discordant records','DIAMOND: 88 discordant records'][j],loc='left',fontsize=8.3,pad=10)
+        ticks=[v for v in [1,10,100,1000] if v <= max(ranks)*1.15]
+        ax.set_xticks(ticks,[str(v) for v in ticks])
+        ax.set_xlabel(['First matching EC-centre rank','First matching protein-hit rank'][j]);ax.set_title(['CLEAN: 50 discordant records','DIAMOND: 88 discordant records'][j],loc='left',fontsize=8.3,pad=25)
         threshold=[10,50][j];ax.axvline(threshold,color='#66737A',ls='--',lw=.8)
-        ax.text(threshold,8,['Calling limit = 10','Rank 50 (no truncation)'][j],ha='left',va='bottom',rotation=90,fontsize=7,color='#52636D')
+        # Place the rank guide outside the data field; curves are unchanged.
+        ax.annotate(['Calling limit: 10','Rank 50; all hits retained'][j],
+                    xy=(threshold,103), xycoords='data', xytext=(0,7),
+                    textcoords='offset points', ha='center', va='bottom',
+                    fontsize=7, color='#52636D', clip_on=False)
+        
         ax.grid(axis='y',lw=.4,color='#E5E9EC');ax.set_axisbelow(True)
         if j==0:
             ax.set_ylabel('Cumulative fraction (%)')
         for r in sub:sources.append({'panel':'C','method':m,'state':r['state'],'protein_id':r['protein_id'],'first_matching_rank':r['first_matching_rank'],'denominator':len(sub)})
+    for label in fig.findobj(matplotlib.text.Text):
+        label.set_fontsize(max(8,label.get_fontsize()))
     d=OUT/'figures';d.mkdir(parents=True,exist_ok=True)
     fig.savefig(d/'Fig2.pdf');fig.savefig(d/'Fig2.svg');fig.savefig(d/'Fig2.png',dpi=180)
     fig.savefig(d/'Fig2.tif',dpi=300,pil_kwargs={'compression':'tiff_lzw'})
@@ -66,5 +75,8 @@ def main():
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--data-dir',type=Path,default=ROOT)
-    ROOT=parser.parse_args().data_dir.resolve()
+    parser.add_argument('--output-dir',type=Path,default=OUT)
+    args=parser.parse_args()
+    ROOT=args.data_dir.resolve()
+    OUT=args.output_dir.resolve()
     main()

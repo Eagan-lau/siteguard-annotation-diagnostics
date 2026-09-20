@@ -1,32 +1,20 @@
-# Figure source data and reproduction
+# Figure data and plotting programs
 
-This directory contains the evaluated numerical inputs and source-bundle renderers. The current manuscript uses the mapping below. From the repository root run `python render_current_figures.py --output outputs/current_figures` to apply this mapping and add the native-workflow Figure 2 and graphical abstract.
+The article's final layouts are in the data archive under `data/article_figures/`. Run `python export_article_figures.py --output outputs/article_figures` from the repository root to export them.
 
-## Usage
-
-Use Python 3.11 or later with NumPy, Matplotlib and Pillow. The included pypdf distribution supports the source-bundle renderer. Install Arial for the authored font geometry.
-
-```sh
-python render_article_figures.py --output-dir figures_output
-```
-
-The output directory must be new. The command writes vector PDFs, editable SVGs and PNG previews for all eight figures, with TIFFs for Figures 1, 2 and 5. Sources are read relative to the extracted archive, and intermediate renders use a temporary directory.
-
-## Numerical source mapping
-
-| Article figure | Numerical source | Renderer |
+| Article figure | Numerical data | Analytical plotting program |
 | --- | --- | --- |
-| Figure 1 | `source_data/Fig1/numerical_source.json` | `render_figure1.py` |
-| Figure 4 | `source_data/Fig2/phase444_*.tsv` | `render_figure2.py` |
-| Figure 5 | `source_data/Fig3/` | `build_figures.py`, source figure 3 |
-| Figure 6 | `source_data/Fig4/` | `build_figures.py`, source figure 4 |
-| Figure 3 | `diagnostic_source/` | `build_diagnostic_figure.py` |
-| Figure S14 | `source_data/Fig5/` | `build_figures.py`, source figure 5 |
-| Figure S12 | `source_data/Fig6/` | `build_figures.py`, source figure 6 |
-| Figure S13 | `source_data/Fig7/` | `build_figures.py`, source figure 7 |
+| Fig 1 | `source_data/Fig1/` | `render_figure1.py` |
+| Fig 2 | `data/native_workflows/`; `plos_presentation/inputs/` | `plos_presentation/render_native_figure2.py` |
+| Fig 3 | `diagnostic_source/`; `data/diagnosis/` | `build_diagnostic_figure.py` |
+| Fig 4 | `source_data/Fig2/` | `render_figure2.py` |
+| Fig 5 | `source_data/Fig3/` | `build_figures.py` |
+| Fig 6 | `source_data/Fig4/` | `build_figures.py` |
+| S1 Fig | `plos_presentation/inputs/s1_layout_values.json` | `plos_presentation/render_s1.py` |
+| S5 Fig | `source_data/Fig5/` | `build_figures.py` |
+| S11 Fig | `source_data/Fig6/` | `build_figures.py` |
+| S12 Fig | `source_data/Fig7/` | `build_figures.py` |
 
-Figure 2 retains all six paired availability estimates and pointwise 95% intervals. Its right-hand panel C view repeats the three retrieval-extension estimates on a 0-2.5 percentage-point scale. Figure 5 uses the 1,116 EC-L4 records at a Top-50 budget in the saved diagnosis and score tables. Figure S12 includes the original 297 matched sets as Parquet and an equivalent tab-delimited file. `supporting_sources/S5/` contains the candidate multiplicity, retrieval-rank and cluster-weighting source tables for Figure S5.
+The source-data directory names are identifiers used by the plotting programs. The table above gives their article numbering. Additional supporting-figure records are mapped in `data/article_figures/FIGURE_SOURCE_MAP.tsv` and `data/SUPPLEMENT_MAP.tsv`. The 297 local-similarity matched sets are supplied as TSV and Parquet in `source_data/Fig6/`.
 
-`input_manifest.json` records the source-table identities used by the source-bundle renderer. `FILE_MANIFEST.tsv` records the SHA-256 hash and byte count of each archive member, excluding itself.
-
-The internal source-bundle command retains its source numbering; the root command applies the manuscript numbering. Native Figure 2 uses `analysis/native_workflows/render_figure2.py` and `data/native_workflows/results/`. The graphical abstract is a conceptual schematic drawn by `build_graphical_abstract.py`.
+Plotting requires the root dependencies and Arial. Use each script's `--help` for its output argument. Analytical chart rendering and export of the selected publication artwork are separate commands.

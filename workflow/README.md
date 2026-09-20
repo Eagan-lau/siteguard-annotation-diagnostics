@@ -1,34 +1,15 @@
-# Scientific workflow source
+# Scientific workflow
 
-| Stage | Source directory / principal implementation |
+| Stage | Implementation |
 | --- | --- |
-| Resource acquisition | `scripts/acquisition/` |
-| Truth tables and reaction vocabulary | `scripts/historical/phase01_truth.py`, `phase02_canonicalize.py` |
-| Historical partitioning, retrieval and features | `scripts/historical/phase03_*` through `phase07_*` |
-| Historical models and calibration | `scripts/historical/phase10_*`, `phase11_*`, `phase12_*` |
-| Candidate support and restoration | `scripts/historical/phase444_*`, `phase445_*`, `phase450_paired_transition.py` |
-| Native nearest-reference transfer | `scripts/historical/phase450b_native_sequence_diagnostic.py` |
-| Local-site, temporal and selection controls | Remaining historical scientific implementations |
-| Sequence-component roles and retrieval | `scripts/rebuild/s3_*`, `s4a_*` through `s4m_*` |
-| Common role features and outcomes | `scripts/rebuild/s4n_build_role_features.py`, `s4o_join_role_outcomes.py` |
-| TRAIN preprocessing | `scripts/rebuild/s4p_prepare_matrices.py` |
-| Three-seed residual MLP | `scripts/rebuild/s4q_train_multiseed.py` |
-| Ensemble inference | `scripts/rebuild/s4r_ensemble_inference.py` |
-| Isotonic fitting and hierarchical rule | `scripts/rebuild/s4s_fit_calibration_and_rule.py` |
-| Held-out evaluation | `scripts/rebuild/s4t_final_retest_evaluation.py` |
+| Provider downloads and catalogs | `scripts/acquisition/` |
+| Cluster-split benchmark | `scripts/cluster_split/` |
+| Sequence-separated benchmark | `scripts/sequence_separated/` |
+| Embedding extraction | `scripts/embedding_helpers/` |
+| Shared annotation and prediction functions | `siteguard/` |
 
-Source identifiers are retained so the implementations can be matched to the
-saved scientific inputs. The source files preserve the evaluated algorithms,
-parameters and input checks. Shared modules are under `siteguard/`.
+The cluster-split implementation includes activity harmonization, reaction vocabulary, candidate retrieval, pair features, neural and tree models, calibration, candidate restoration and the secondary controls. The sequence-separated implementation includes component assignment, reference-library construction, retrieval, balanced training pairs, three-seed model fitting, calibration and held-out evaluation.
 
-Use the files' command-line arguments for input and output locations. Historical
-programs using input contracts require their experiment-specific tables and
-metadata. They are source implementations, not a single-command installation.
-The root REPRODUCE.md provides the portable entries that run directly on the
-public accompanying data.
+Run individual programs with their input/output arguments. Programs that use an experiment contract expect the input tables and metadata defined by that contract. Input record identifiers and schema keys are retained for compatibility with the scientific datasets. The root `REPRODUCE.md` gives the portable analyses that run on the deposited data.
 
-CPU analysis versions are recorded in `requirements-analysis.txt`. GPU fitting
-used Python 3.11.3, PyTorch 2.1.2, CUDA 12.1.1 and NumPy 1.25.1, as recorded in
-`training-environment.json`. `configs/sequence_rebuild.json` gives the fixed
-architecture, seeds, roles and calibration objective. Output directories are
-separate from source inputs.
+CPU dependencies are listed in `requirements-analysis.txt`. Model fitting used Python 3.11.3, PyTorch 2.1.2, CUDA 12.1.1 and NumPy 1.25.1; see `training-environment.json`. `configs/sequence_rebuild.json` records the architecture, seeds, role counts and calibration objective. Provider resources are listed in the root `DATA_SOURCES.md`.
