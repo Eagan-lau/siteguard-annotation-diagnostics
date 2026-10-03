@@ -1,6 +1,6 @@
 # SiteGuard annotation diagnostics
 
-Software for **Diagnosing reference support and selection failures in enzyme annotation**.
+Software for **Tracing reference support to diagnose failures in enzyme annotation**.
 
 The diagnostic traces a query's documented activities through a reference library, candidate set and selected outputs. It identifies missing reference support, candidate loss and selection disagreement. Adapters cover SiteGuard candidate scores, CLEAN EC-centre distances and DIAMOND protein hits.
 
