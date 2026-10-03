@@ -5,8 +5,8 @@ title: "SiteGuard: software for diagnosing reference support and selection failu
 authors:
   - family-names: Liu
     given-names: Yugeng
-version: 2.7.0
-date-released: 2026-09-20
-doi: 10.5281/zenodo.22859697
+version: 2.7.1
+date-released: 2026-10-04
+doi: 10.5281/zenodo.23126915
 repository-code: "https://github.com/Eagan-lau/siteguard-annotation-diagnostics"
 license: MIT
