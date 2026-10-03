@@ -70,7 +70,7 @@ def render(source,out):
         else:ax.annotate('1',xy=(left+count/2,-.275),xytext=(left+count/2,-.85),ha='center',va='top',fontsize=8.5,arrowprops={'arrowstyle':'-','color':'#536370','lw':.6})
         left+=count
     ax.set_xlim(0,204);ax.set_ylim(-1.1,.45);ax.axis('off')
-    labels=['No TRAIN\nlibrary support','Absent from\nsaved union','Outside\nTop-50','Strict-score\nselection loss','Top-score-tie\nselection loss']
+    labels=['No matching\nlibrary support','Absent from\ncomplete\ncandidate union','Outside\nTop-50','Strict-score\nselection loss','Top-score-tie\nselection loss']
     for i,(label,col) in enumerate(zip(labels,COLORS)):
         x=.075+i*.177
         fig.add_artist(plt.Rectangle((x,.767),.012,.012,transform=fig.transFigure,facecolor=col,edgecolor='none'))
@@ -79,7 +79,7 @@ def render(source,out):
         'Two post hoc illustrations; bars show fractions of each component')
     for j,c in enumerate(v['component_examples']):
         ax=fig.add_axes([.215+j*.435,.408,.29,.205])
-        names=['TRAIN support','Top-50 support','SiteGuard','CLEAN']
+        names=['Library support','Top-50 support','SiteGuard-S','CLEAN']
         nums=[c[k] for k in ['library_match','top50_match','siteguard_concordant','clean_concordant']]
         y=np.arange(4)
         ax.barh(y,[100*n/c['n'] for n in nums],height=.55,color=['#C2D1D8','#90B1C2','#357CA1','#243642'])
