@@ -24,16 +24,16 @@ To analyze another workflow, supply the four tables described in [INPUT_FORMAT.m
 | `article_figures/` | Numerical figure inputs and plotting programs |
 | `workflow/` | Resource acquisition, features, training and evaluation source |
 
-Extract the [data archive](https://doi.org/10.5281/zenodo.23268019) here to obtain `data/`. It contains query-level predictions, candidate records, resampling draws, fitted models and the article figures. Third-party database releases and pretrained models are listed in [DATA_SOURCES.md](DATA_SOURCES.md).
+Extract the [data archive](https://doi.org/10.5281/zenodo.23270355) here to obtain `data/`. It contains query-level predictions, candidate records, resampling draws, fitted models and the article figures. Third-party database releases and pretrained models are listed in [DATA_SOURCES.md](DATA_SOURCES.md).
 
 Concordance means agreement with documented activities. Missing annotation and unknown acceptance decisions retain separate states. The temporal dataset contains 10 records in nine sequence components and supports a descriptive paired comparison.
 
 ## Citation and license
 
-Release: **2.7.2**. Code author: **Yugeng Liu**.
+Release: **2.7.3**. Code author: **Yugeng Liu**.
 
-- [Software DOI](https://doi.org/10.5281/zenodo.23268195)
-- [Data DOI](https://doi.org/10.5281/zenodo.23268019)
+- [Software DOI](https://doi.org/10.5281/zenodo.23270343)
+- [Data DOI](https://doi.org/10.5281/zenodo.23270355)
 - [Code repository](https://github.com/Eagan-lau/siteguard-annotation-diagnostics)
 
 Original code uses [MIT](LICENSE). Original derived data and artwork use [CC BY 4.0](LICENSE-DATA.md). Third-party resources retain their provider terms. Machine-readable software citation: `CITATION.cff`.

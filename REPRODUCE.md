@@ -4,6 +4,7 @@ Extract the data archive beside this file to create `data/`. The core diagnostic
 
 ```bash
 python -m pip install -r requirements.txt
+mkdir -p outputs
 python diagnose.py --example --output outputs/synthetic
 python adapt_siteguard.py data/diagnosis/source outputs/diagnostic_input
 python diagnose.py --input outputs/diagnostic_input --output outputs/diagnosis
